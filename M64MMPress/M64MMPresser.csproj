@@ -1,0 +1,260 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E8139D95-0B79-4E2A-AD09-3EB947FB37CF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>M64MMPresser</RootNamespace>
+    <AssemblyName>M64MMPresser</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Classes\Keyframe.cs" />
+    <Compile Include="Classes\KeyframeRack.cs" />
+    <Compile Include="Classes\KIOTypesBinder.cs" />
+    <Compile Include="Classes\Marker.cs" />
+    <Compile Include="Classes\RackTypes\KeyframeRacks.cs" />
+    <Compile Include="Classes\Region.cs" />
+    <Compile Include="Classes\Timeline.cs" />
+    <Compile Include="Classes\TimelineEventArgClasses.cs" />
+    <Compile Include="Classes\UncommittedRackChange.cs" />
+    <Compile Include="Classes\XYAngle.cs" />
+    <Compile Include="Controls\DoubleBufferedPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\TimelineRenderer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\TimelineRenderer.Designer.cs">
+      <DependentUpon>TimelineRenderer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Enums\Direction.cs" />
+    <Compile Include="Extensions\MathExtensions.cs" />
+    <Compile Include="frmAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAbout.Designer.cs">
+      <DependentUpon>frmAbout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\KIOBase.cs" />
+    <Compile Include="FrmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMain.Designer.cs">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmNazOops.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmNazOops.Designer.cs">
+      <DependentUpon>FrmNazOops.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\IKeyframe.cs" />
+    <Compile Include="Module.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\M64MM\M64MM.Addon\M64MM.Addon.csproj">
+      <Project>{3e74c215-dda5-4fb1-bcd8-b47ae3935cfd}</Project>
+      <Name>M64MM.Addon</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\M64MM\M64MM.Utils\M64MM.Utils.csproj">
+      <Project>{3587b41b-7005-49ce-a884-6986adc8ca01}</Project>
+      <Name>M64MM.Utils</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Controls\TimelineRenderer.resx">
+      <DependentUpon>TimelineRenderer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAbout.resx">
+      <DependentUpon>frmAbout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMain.resx">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmNazOops.resx">
+      <DependentUpon>FrmNazOops.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\.editorconfig">
+      <Link>.editorconfig</Link>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MACBG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\spamton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MACBG1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MACBG2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fLinear.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fSub.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fBezier.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fHold.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fSmooth.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fSharp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fSlow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fFast.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fShake.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fSelected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\selectKeyframes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nudgeKfLeft.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nudgeKfRight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\deleteKf.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\addKf.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\moveKeyframes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sandwich.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\play.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\end.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\begin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\frameadvance.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\framestepback.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\behindKf.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\frontKf.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\posBox.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rotBox.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\zxBox.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nazoops.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\orchestrator_512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\orchestrator_64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\press_512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\press_64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\press.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
